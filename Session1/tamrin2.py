@@ -1,24 +1,24 @@
-inp1 = int(input())
-inp2 = int(input())
-
-bmm = 0
-kmm = 0
-numbmm = 1
-numkmm = 1
-k = 0
-if inp1 > inp2:
-    b = inp1
+inp = input()
+index = 0
+for t in inp:
+    if inp[index] == " ":
+        inp1 = int(inp[:index])
+        inp2 = int(inp[index:])
+    index += 1
+bmm = []
+b = 1
+if inp1>inp2:
+    big = int(inp1)
+    small = int(inp2)
 else:
-    b = inp2
-while True:
-    if numbmm > b/2:
-        break
-    else:
-        if int(inp1/numbmm) == inp1/numbmm and int(inp2/numbmm) == inp2/numbmm:
-            bmm += numbmm
-    numbmm += 1
-while True:
-    var = inp2*inp1
-    if int(var/numkmm) == var/numkmm:
-        kmm += numkmm
-    numkmm += 1
+    big = inp2
+    small = inp1
+for r in range(int(big/2)):
+    if int(inp1/(r+1)) == inp1/(r+1) and int(inp2/(r+1)) == inp2/(r+1):
+        bmm.append(r+1)
+
+if int(big/small) == big/small:
+    kmm = big
+else:
+    kmm = max(bmm) * big 
+print(str(max(bmm))+" "+str(kmm))
