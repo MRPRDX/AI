@@ -15,6 +15,7 @@ for r in range(int(n)):
 
 if (n/max(bmm)) * (m/max(bmm)) < m or (n/max(bmm)) * (m/max(bmm)) == m:
     kmm = (n/max(bmm)) * (m/max(bmm)) * max(bmm)
+    # for example for 34 and 36 it's wrong
 else:
     kmm = (n/max(bmm)) * (m/max(bmm))
 print(str(max(bmm))+" "+str(int(kmm)))
