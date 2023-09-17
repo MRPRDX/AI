@@ -2,14 +2,17 @@ inp = input()
 index = inp.index(" ")
 n = int(inp[:index])
 m = int(inp[index:])
-bmm = 0
-b = 1
-r = n
-while True:
-    if int(n/(r)) == n/(r) and int(m/(r)) == m/(r):
-        bmm = r
-        break
-    r -= 1
-i = n/bmm
-kmm = (m/bmm) * n
-print(str(bmm)+" "+str(int(kmm)))
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+        # we can't seperate a and b assignment in different lines because new a and b is assigned after this line
+        print(a, b)
+        # this loop continues until b which is smaller number equals 0 then other number equals bmm 
+    return a
+
+
+bmm = gcd(n, m)
+kmm = (n * m) // bmm
+
+print(str(bmm) + " " + str(kmm))
