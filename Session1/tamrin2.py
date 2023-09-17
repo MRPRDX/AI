@@ -2,20 +2,14 @@ inp = input()
 index = inp.index(" ")
 n = int(inp[:index])
 m = int(inp[index:])
-bmm = []
+bmm = 0
 b = 1
-
-r = 0
+r = n
 while True:
-    if int(n/(r+1)) == n/(r+1) and int(m/(r+1)) == m/(r+1):
-        bmm.append(r+1)
-    if r == int(n/2):
+    if int(n/(r)) == n/(r) and int(m/(r)) == m/(r):
+        bmm = r
         break
-    r += 1
-i = n/max(bmm)
-while True:
-    if int((m*i)/n) == (m*i)/n:
-        kmm = m*i
-        break
-    i -= 1
-print(str(max(bmm))+" "+str(int(kmm)))
+    r -= 1
+i = n/bmm
+kmm = (m/bmm) * n
+print(str(bmm)+" "+str(int(kmm)))
