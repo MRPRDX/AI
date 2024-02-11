@@ -4,12 +4,12 @@ from sklearn import svm
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, recall_score, precision_score
-df = pd.read_csv('./diabetes.csv')
+df = pd.read_csv('./op_webcam.csv')
 df.head()
 
-df['Outcome'].value_counts()
-X = df.drop('Outcome', axis=1)
-y = df['Outcome']
+df['EAR'].value_counts()
+X = df.drop('EAR', axis=1)
+y = df['EAR']
 
 X = np.array(X)
 y = np.array(y)
