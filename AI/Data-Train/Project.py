@@ -84,8 +84,8 @@ def EAR_pipeline2(image):
     right_EAR = (p26r + p35r) / (2 * p14r)
     a = [left_EAR, right_EAR, MAR]
     # a = np.array([a])
-    # transformer = Normalizer().fit(a)
-    # a = transformer.transform(a)
+    # scaler = StandardScaler()
+    # a = scaler.fit_transform([a])
     return [a]
 
 
@@ -95,7 +95,8 @@ y = df["Label"]
 x = np.array(x)
 y = np.array(y)
 
-# transformer = Normalizer().fit(x)
+# transformer = Normalizer().transform(x)
+# x = transformer
 # transformer.transform(x)
 
 scaler = StandardScaler()
@@ -124,7 +125,10 @@ model = KNeighborsClassifier(n_neighbors=9)
 # model = DTC(random_state=10)
 
 model.fit(x_train, y_train)
-
+i = 0
+for n in x:
+    print(x[i])
+    i += 1
 n = model.predict(x_test)
 a = accuracy_score(y_test, n)
 print(a)
@@ -156,7 +160,7 @@ while True:
         fontScale = 1
 
         # Blue color in BGR
-        color = (255, 0, 0)
+        color = (0, 0, 255)
 
         # Line thickness of 2 px
         thickness = 2
