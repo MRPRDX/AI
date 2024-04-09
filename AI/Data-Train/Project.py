@@ -132,7 +132,8 @@ for n in x:
 n = model.predict(x_test)
 a = accuracy_score(y_test, n)
 print(a)
-
+accumulator = 0
+i = 0
 while True:
     webcam = cv2.VideoCapture(0)
     # instead of 0 if we give a video directory it still works
@@ -142,14 +143,32 @@ while True:
         try:
           prediction = model.predict(EAR_pipeline2(frame))
           if prediction == [0]:
-            text = 'Awake'
+            # text = 'Awake'
+            accumulator -= 1
           elif prediction == [1]:
-            text = 'Drowsy'
+            # text = 'Drowsy'
+            accumulator += 1
         except:
-          text = "No Face Detected"
+            text = "No Face Detected"
         # Reading an image in default mode
+        if accumulator == 200:
+            accumulator = 0
+            # text = "Drowsy"
+            i = 1
+        else:
+            text = ""
+        if accumulator == -100:
+            accumulator = 0
+            # text = "Awake"
+            i = -1
+        else:
+            text = ""
+        if i == 1:
+            text = "Drowsy"
+        elif i == -1:
+            text = "Awake"
         image = cv2.imread
-
+        print(accumulator)
         # font
         font = cv2.FONT_HERSHEY_SIMPLEX
 
