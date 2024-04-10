@@ -168,7 +168,6 @@ while True:
         elif i == -1:
             text = "Awake"
         image = cv2.imread
-        print(accumulator)
         # font
         font = cv2.FONT_HERSHEY_SIMPLEX
 
